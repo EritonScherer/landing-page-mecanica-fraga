@@ -9,13 +9,16 @@ const differentials = [
   { title: 'Peças de procedência', icon: BadgeCheck },
   { title: 'Garantia e pós-serviço', icon: Shield },
 ];
+
+const basePath = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+const heroImage = `${basePath}images/hero-oficina-premium.webp`;
 ---
 
 <section id="sobre" class={`section ${styles.about}`} aria-labelledby="about-title">
   <div class={`container ${styles.aboutGrid}`}>
     <div class={styles.aboutMedia} data-reveal>
       <img
-        src="/images/hero-oficina-premium.webp"
+        src={heroImage}
         alt="Ambiente organizado da Mecânica Fraga com carro em manutenção"
         width="1672"
         height="941"

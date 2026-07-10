@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://mecanicafraga.com.br/sitemap-index.xml
+Sitemap: https://eritonscherer.github.io/landing-page-mecanica-fraga/sitemap-index.xml

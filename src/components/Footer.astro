@@ -3,21 +3,27 @@ import { Camera, MapPin, MessageCircle } from '@lucide/astro';
 import styles from './Footer.module.css';
 
 const currentYear = new Date().getFullYear();
+const basePath = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+const assetPath = (path: string) => `${basePath}${path}`;
+const logoSmall = assetPath('images/logo-mecanica-fraga-280.webp');
+const logoMedium = assetPath('images/logo-mecanica-fraga-420.webp');
+const logoFallback = assetPath('images/logo-mecanica-fraga-420.png');
+const homeHref = basePath;
 ---
 
 <footer class={styles.footer}>
   <div class={`container ${styles.footerGrid}`}>
     <div>
-      <a class={styles.footerLogo} href="/" aria-label="Mecânica Fraga - início">
+      <a class={styles.footerLogo} href={homeHref} aria-label="Mecânica Fraga - início">
         <picture>
           <source
-            srcset="/images/logo-mecanica-fraga-280.webp 280w, /images/logo-mecanica-fraga-420.webp 420w"
+            srcset={`${logoSmall} 280w, ${logoMedium} 420w`}
             sizes="220px"
             type="image/webp"
           />
           <img
             class={styles.footerLogoImage}
-            src="/images/logo-mecanica-fraga-420.png"
+            src={logoFallback}
             alt="Mecânica Fraga"
             width="420"
             height="125"
