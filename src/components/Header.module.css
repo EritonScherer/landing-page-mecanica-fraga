@@ -10,7 +10,7 @@
     background var(--transition);
 }
 
-.header.isScrolled {
+.header[data-scrolled] {
   border-color: var(--color-border);
   background: rgba(16, 16, 16, 0.92);
 }
@@ -105,7 +105,7 @@
       transform var(--transition);
   }
 
-  .navigation.isOpen {
+  .navigation[data-open] {
     opacity: 1;
     pointer-events: auto;
     transform: translateY(0);
@@ -128,11 +128,11 @@
     display: grid;
   }
 
-  .menuButton.isOpen .menuIconOpen {
+  .menuButton[data-open] .menuIconOpen {
     display: none;
   }
 
-  .menuButton.isOpen .menuIconClose {
+  .menuButton[data-open] .menuIconClose {
     display: block;
   }
 }

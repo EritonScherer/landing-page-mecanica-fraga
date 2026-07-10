@@ -3,15 +3,16 @@ const mainNavigation = document.querySelector<HTMLElement>('[data-navigation]');
 const menuToggle = document.querySelector<HTMLButtonElement>('[data-menu-toggle]');
 
 const closeMenu = (): void => {
-  mainNavigation?.classList.remove('isOpen');
-  menuToggle?.classList.remove('isOpen');
+  mainNavigation?.removeAttribute('data-open');
+  menuToggle?.removeAttribute('data-open');
   menuToggle?.setAttribute('aria-expanded', 'false');
   menuToggle?.setAttribute('aria-label', 'Abrir menu');
 };
 
 const toggleMenu = (): void => {
-  const isOpen = mainNavigation?.classList.toggle('isOpen') ?? false;
-  menuToggle?.classList.toggle('isOpen', isOpen);
+  const isOpen = mainNavigation?.getAttribute('data-open') !== 'true';
+  mainNavigation?.toggleAttribute('data-open', isOpen);
+  menuToggle?.toggleAttribute('data-open', isOpen);
   menuToggle?.setAttribute('aria-expanded', String(isOpen));
   menuToggle?.setAttribute('aria-label', isOpen ? 'Fechar menu' : 'Abrir menu');
 };
@@ -31,7 +32,7 @@ document.addEventListener('keydown', (event) => {
 });
 
 const syncHeaderState = (): void => {
-  header?.classList.toggle('isScrolled', window.scrollY > 12);
+  header?.toggleAttribute('data-scrolled', window.scrollY > 12);
 };
 
 syncHeaderState();
