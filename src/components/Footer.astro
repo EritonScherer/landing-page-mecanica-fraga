@@ -1,5 +1,6 @@
 ---
 import { Camera, MapPin, MessageCircle } from '@lucide/astro';
+import { contactConfig } from '../config/contact';
 import styles from './Footer.module.css';
 
 const currentYear = new Date().getFullYear();
@@ -44,14 +45,13 @@ const homeHref = basePath;
 
     <div class={styles.footerContact}>
       <strong>Contato</strong>
-      <a href="https://wa.me/5547999999999"><MessageCircle size={18} aria-hidden="true" /> WhatsApp</a>
+      <a href={contactConfig.whatsappHref}><MessageCircle size={18} aria-hidden="true" /> WhatsApp</a>
       <a href="https://maps.google.com/?q=Av.%20Gravata%C3%AD%2C%20335%20-%20Vera%20Cruz%2C%20Gravata%C3%AD%20-%20RS%2C%2094090-490"><MapPin size={18} aria-hidden="true" /> Gravataí, RS</a>
-      <a href="https://instagram.com/"><Camera size={18} aria-hidden="true" /> Instagram</a>
+      <a href={contactConfig.instagramUrl}><Camera size={18} aria-hidden="true" /> Instagram</a>
     </div>
   </div>
 
   <div class={`container ${styles.footerBottom}`}>
     <span>© {currentYear} Mecânica Fraga. Todos os direitos reservados.</span>
-    <span>Desenvolvido com Astro, TypeScript e CSS Modules.</span>
   </div>
 </footer>

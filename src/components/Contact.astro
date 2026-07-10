@@ -1,12 +1,13 @@
 ---
 import { Clock, Mail, MapPin, Phone, Send } from '@lucide/astro';
 import type { ContactItem } from '@app-types/landing';
+import { contactConfig } from '../config/contact';
 import styles from './Contact.module.css';
 
 const contactItems: ContactItem[] = [
-  { label: 'Telefone', value: '(47) 99999-9999', href: 'tel:+5547999999999', icon: Phone },
-  { label: 'WhatsApp', value: 'Chamar no WhatsApp', href: 'https://wa.me/5547999999999', icon: Send },
-  { label: 'E-mail', value: 'contato@mecanicafraga.com.br', href: 'mailto:contato@mecanicafraga.com.br', icon: Mail },
+  { label: 'Telefone', value: contactConfig.phoneDisplay, href: contactConfig.phoneHref, icon: Phone },
+  { label: 'WhatsApp', value: 'Chamar no WhatsApp', href: contactConfig.whatsappHref, icon: Send },
+  { label: 'E-mail', value: contactConfig.email, href: contactConfig.emailHref, icon: Mail },
   {
     label: 'Endereço',
     value: 'Av. Gravataí, 335 - Vera Cruz, Gravataí - RS, 94090-490',
@@ -29,7 +30,8 @@ const contactItems: ContactItem[] = [
         <Clock size={22} aria-hidden="true" />
         <div>
           <strong>Horário de atendimento</strong>
-          <span>Segunda a sexta, das 8h às 18h</span>
+          <span>Segunda a sexta-feira</span>
+          <span class={styles.contactHoursTime}>das 8h às 12h e das 13h10 às 18h</span>
         </div>
       </div>
     </div>

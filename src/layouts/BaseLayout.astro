@@ -17,7 +17,9 @@ const {
   ogImage = assetPath('images/hero-oficina-premium.webp'),
 } = Astro.props;
 
-const favicon = assetPath('favicon/favicon.svg');
+const favicon = assetPath('favicon/favicon.ico');
+const favicon32 = assetPath('favicon/favicon-32x32.png');
+const appleTouchIcon = assetPath('favicon/apple-touch-icon.png');
 const ogImageUrl = new URL(ogImage, Astro.site ?? canonical).toString();
 ---
 
@@ -29,7 +31,9 @@ const ogImageUrl = new URL(ogImage, Astro.site ?? canonical).toString();
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
-    <link rel="icon" href={favicon} type="image/svg+xml" />
+    <link rel="icon" href={favicon} sizes="any" />
+    <link rel="icon" href={favicon32} type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href={appleTouchIcon} />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="pt_BR" />
     <meta property="og:title" content={title} />

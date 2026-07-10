@@ -1,5 +1,6 @@
 ---
 import { PhoneCall } from '@lucide/astro';
+import { contactConfig } from '../config/contact';
 import ButtonLink from './ButtonLink.astro';
 import styles from './CTA.module.css';
 ---
@@ -11,7 +12,7 @@ import styles from './CTA.module.css';
       <h2 id="cta-title" class={styles.ctaTitle}>Percebeu ruído, falha ou luz acesa no painel?</h2>
       <p class={styles.ctaText}>Agende uma avaliação e receba orientação técnica antes que o problema fique maior.</p>
     </div>
-    <ButtonLink href="https://wa.me/5547999999999" label="Chamar no WhatsApp" ariaLabel="Chamar a Mecânica Fraga no WhatsApp" />
+    <ButtonLink href={contactConfig.whatsappHref} label="Chamar no WhatsApp" ariaLabel="Chamar a Mecânica Fraga no WhatsApp" />
     <PhoneCall class={styles.ctaIcon} size={120} aria-hidden="true" />
   </div>
 </section>
