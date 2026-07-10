@@ -2,6 +2,7 @@
 import { Clock, Mail, MapPin, Phone, Send } from '@lucide/astro';
 import type { ContactItem } from '@app-types/landing';
 import { contactConfig } from '../config/contact';
+import { getExternalLinkAttributes } from '../utils/links';
 import styles from './Contact.module.css';
 
 const contactItems: ContactItem[] = [
@@ -46,7 +47,7 @@ const contactItems: ContactItem[] = [
               </span>
               <div>
                 <span class={styles.contactLabel}>{label}</span>
-                {href ? <a class={styles.contactValue} href={href}>{value}</a> : <span class={styles.contactValue}>{value}</span>}
+                {href ? <a class={styles.contactValue} href={href} {...getExternalLinkAttributes(href)}>{value}</a> : <span class={styles.contactValue}>{value}</span>}
               </div>
             </li>
           ))

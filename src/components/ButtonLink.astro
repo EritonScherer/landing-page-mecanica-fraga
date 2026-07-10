@@ -1,5 +1,6 @@
 ---
 import { ArrowRight } from '@lucide/astro';
+import { getExternalLinkAttributes } from '../utils/links';
 import styles from './ButtonLink.module.css';
 
 interface Props {
@@ -11,9 +12,10 @@ interface Props {
 
 const { href, label, variant = 'primary', ariaLabel } = Astro.props;
 const className = `${styles.button} ${styles[variant]}`;
+const linkAttributes = getExternalLinkAttributes(href);
 ---
 
-<a class={className} href={href} aria-label={ariaLabel ?? label}>
+<a class={className} href={href} aria-label={ariaLabel ?? label} {...linkAttributes}>
   <span>{label}</span>
   <ArrowRight size={18} stroke-width={2.2} aria-hidden="true" />
 </a>
