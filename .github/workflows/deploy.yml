@@ -39,6 +39,8 @@ jobs:
         run: npm run build
         env:
           ASTRO_TELEMETRY_DISABLED: '1'
+          SITE_URL: ${{ vars.SITE_URL || 'https://eritonscherer.github.io' }}
+          BASE_PATH: ${{ vars.BASE_PATH || '/landing-page-mecanica-fraga/' }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
