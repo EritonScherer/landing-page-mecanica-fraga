@@ -41,6 +41,9 @@ jobs:
           ASTRO_TELEMETRY_DISABLED: '1'
           SITE_URL: ${{ vars.SITE_URL || 'https://eritonscherer.github.io' }}
           BASE_PATH: ${{ vars.BASE_PATH || '/landing-page-mecanica-fraga/' }}
+          CONTACT_EMAIL: ${{ vars.CONTACT_EMAIL || 'contato@mecanicafraga.com.br' }}
+          CONTACT_INSTAGRAM_URL: ${{ vars.CONTACT_INSTAGRAM_URL || 'https://instagram.com/' }}
+          CONTACT_WHATSAPP_NUMBER: ${{ vars.CONTACT_WHATSAPP_NUMBER || '5547999999999' }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
