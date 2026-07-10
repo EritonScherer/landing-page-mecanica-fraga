@@ -1,0 +1,65 @@
+---
+import { Clock, Mail, MapPin, Phone, Send } from '@lucide/astro';
+import type { ContactItem } from '@app-types/landing';
+import styles from './Contact.module.css';
+
+const contactItems: ContactItem[] = [
+  { label: 'Telefone', value: '(47) 99999-9999', href: 'tel:+5547999999999', icon: Phone },
+  { label: 'WhatsApp', value: 'Chamar no WhatsApp', href: 'https://wa.me/5547999999999', icon: Send },
+  { label: 'E-mail', value: 'contato@mecanicafraga.com.br', href: 'mailto:contato@mecanicafraga.com.br', icon: Mail },
+  {
+    label: 'Endereço',
+    value: 'Av. Gravataí, 335 - Vera Cruz, Gravataí - RS, 94090-490',
+    href: 'https://maps.google.com/?q=Av.%20Gravata%C3%AD%2C%20335%20-%20Vera%20Cruz%2C%20Gravata%C3%AD%20-%20RS%2C%2094090-490',
+    icon: MapPin,
+  },
+];
+---
+
+<section id="contato" class={`section ${styles.contact}`} aria-labelledby="contact-title">
+  <div class={`container ${styles.contactGrid}`}>
+    <div class={styles.contactContent} data-reveal>
+      <p class={styles.contactEyebrow}>Contato</p>
+      <h2 id="contact-title" class="sectionTitle">Agende seu atendimento com a Mecânica Fraga.</h2>
+      <p class="sectionLead">
+        Envie uma mensagem com o modelo do veículo e o que você percebeu. A equipe retorna com a melhor orientação para o próximo passo.
+      </p>
+
+      <div class={styles.contactHours}>
+        <Clock size={22} aria-hidden="true" />
+        <div>
+          <strong>Horário de atendimento</strong>
+          <span>Segunda a sexta, das 8h às 18h</span>
+        </div>
+      </div>
+    </div>
+
+    <div class={styles.contactPanel} data-reveal>
+      <ul class={styles.contactList}>
+        {
+          contactItems.map(({ label, value, href, icon: Icon }) => (
+            <li class={styles.contactItem}>
+              <span class={styles.contactIcon} aria-hidden="true">
+                <Icon size={22} />
+              </span>
+              <div>
+                <span class={styles.contactLabel}>{label}</span>
+                {href ? <a class={styles.contactValue} href={href}>{value}</a> : <span class={styles.contactValue}>{value}</span>}
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+
+      <iframe
+        class={styles.contactMap}
+        title="Mapa da Mecânica Fraga em Gravataí, Rio Grande do Sul"
+        src="https://www.google.com/maps?q=Av.%20Gravata%C3%AD%2C%20335%20-%20Vera%20Cruz%2C%20Gravata%C3%AD%20-%20RS%2C%2094090-490&output=embed"
+        width="600"
+        height="320"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+      ></iframe>
+    </div>
+  </div>
+</section>

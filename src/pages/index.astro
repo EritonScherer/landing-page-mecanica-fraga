@@ -1,0 +1,31 @@
+---
+import About from '@components/About.astro';
+import Brands from '@components/Brands.astro';
+import Contact from '@components/Contact.astro';
+import CTA from '@components/CTA.astro';
+import Footer from '@components/Footer.astro';
+import Header from '@components/Header.astro';
+import Hero from '@components/Hero.astro';
+import Services from '@components/Services.astro';
+import Statistics from '@components/Statistics.astro';
+import Testimonials from '@components/Testimonials.astro';
+import BaseLayout from '@layouts/BaseLayout.astro';
+
+const title = 'Mecânica Fraga | Oficina mecânica premium em Gravataí';
+const description = 'Mecânica Fraga oferece diagnóstico eletrônico, revisão preventiva e serviços automotivos com transparência, tecnologia e atendimento profissional em Gravataí, RS.';
+---
+
+<BaseLayout title={title} description={description}>
+  <Header />
+  <main>
+    <Hero />
+    <Statistics />
+    <Services />
+    <About />
+    <CTA />
+    <Testimonials />
+    <Brands />
+    <Contact />
+  </main>
+  <Footer />
+</BaseLayout>

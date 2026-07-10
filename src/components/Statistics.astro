@@ -1,0 +1,24 @@
+---
+import type { Statistic } from '@app-types/landing';
+import styles from './Statistics.module.css';
+
+const statistics: Statistic[] = [
+  { value: '+12', label: 'anos de experiência' },
+  { value: '+3.500', label: 'veículos atendidos' },
+  { value: '4.9', label: 'média de avaliação' },
+  { value: '100%', label: 'clareza no orçamento' },
+];
+---
+
+<section class={styles.statistics} aria-label="Indicadores da Mecânica Fraga">
+  <div class={`container ${styles.statisticsGrid}`}>
+    {
+      statistics.map((statistic) => (
+        <article class={styles.statisticsCard} data-reveal>
+          <strong class={styles.statisticsValue}>{statistic.value}</strong>
+          <p class={styles.statisticsLabel}>{statistic.label}</p>
+        </article>
+      ))
+    }
+  </div>
+</section>

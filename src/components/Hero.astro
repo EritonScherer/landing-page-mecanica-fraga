@@ -1,0 +1,48 @@
+---
+import { ShieldCheck, Gauge, Clock3 } from '@lucide/astro';
+import ButtonLink from './ButtonLink.astro';
+import styles from './Hero.module.css';
+
+const benefits = [
+  { label: 'Diagnóstico preciso', icon: Gauge },
+  { label: 'Garantia no serviço', icon: ShieldCheck },
+  { label: 'Atendimento ágil', icon: Clock3 },
+];
+---
+
+<section class={styles.hero} aria-labelledby="hero-title">
+  <img
+    class={styles.heroMedia}
+    src="/images/hero-oficina-premium.webp"
+    alt="Oficina mecânica premium com carro elevado para manutenção"
+    width="1672"
+    height="941"
+    loading="eager"
+    fetchpriority="high"
+  />
+  <div class={styles.heroOverlay}></div>
+
+  <div class={`container ${styles.heroContent}`} data-reveal>
+    <p class={styles.heroEyebrow}>Oficina mecânica em Gravataí</p>
+    <h1 id="hero-title" class={styles.heroTitle}>Seu carro cuidado com precisão, transparência e tecnologia.</h1>
+    <p class={styles.heroSubtitle}>
+      Manutenção preventiva, diagnóstico eletrônico e serviços automotivos completos para quem busca confiança desde o primeiro atendimento.
+    </p>
+
+    <div class={styles.heroButtons}>
+      <ButtonLink href="#contato" label="Agendar atendimento" />
+      <ButtonLink href="#servicos" label="Ver serviços" variant="secondary" />
+    </div>
+
+    <ul class={styles.heroBenefits} aria-label="Diferenciais da Mecânica Fraga">
+      {
+        benefits.map(({ label, icon: Icon }) => (
+          <li class={styles.heroBenefit}>
+            <Icon size={20} aria-hidden="true" />
+            <span>{label}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

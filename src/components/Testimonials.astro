@@ -1,0 +1,68 @@
+---
+import 'swiper/css';
+import { Star } from '@lucide/astro';
+import type { Testimonial } from '@app-types/landing';
+import styles from './Testimonials.module.css';
+
+const testimonials: Testimonial[] = [
+  {
+    name: 'Carlos Mendes',
+    vehicle: 'Honda Civic',
+    quote: 'Atendimento claro desde o diagnóstico. Explicaram o problema, passaram orçamento e cumpriram o prazo combinado.',
+    rating: 5,
+  },
+  {
+    name: 'Mariana Lopes',
+    vehicle: 'Jeep Compass',
+    quote: 'Levei para revisão antes de viajar e saí com o carro muito mais seguro. Oficina organizada e equipe cuidadosa.',
+    rating: 5,
+  },
+  {
+    name: 'Rafael Stein',
+    vehicle: 'Volkswagen T-Cross',
+    quote: 'Resolveram uma falha elétrica que outras oficinas não encontraram. Gostei muito da transparência.',
+    rating: 5,
+  },
+  {
+    name: 'Ana Fraga',
+    vehicle: 'Toyota Corolla',
+    quote: 'Serviço caprichado, comunicação rápida no WhatsApp e preço justo pelo padrão entregue.',
+    rating: 5,
+  },
+];
+---
+
+<section id="avaliacoes" class={`section ${styles.testimonials}`} aria-labelledby="testimonials-title">
+  <div class="container">
+    <div class={styles.testimonialsHeader} data-reveal>
+      <p class={styles.testimonialsEyebrow}>Avaliações</p>
+      <h2 id="testimonials-title" class="sectionTitle">Clientes que voltam porque sabem exatamente o que foi feito.</h2>
+      <p class="sectionLead">Depoimentos reais devem ser substituídos pelos comentários oficiais do Google assim que o perfil estiver conectado.</p>
+    </div>
+
+    <div class={`swiper ${styles.testimonialsSwiper} testimonialsSwiper`} data-reveal>
+      <div class="swiper-wrapper">
+        {
+          testimonials.map((testimonial) => (
+            <article class={`swiper-slide ${styles.testimonialCard}`}>
+              <div class={styles.testimonialStars} aria-label={`${testimonial.rating} de 5 estrelas`}>
+                {Array.from({ length: testimonial.rating }).map(() => <Star size={18} fill="currentColor" aria-hidden="true" />)}
+              </div>
+              <p class={styles.testimonialQuote}>&ldquo;{testimonial.quote}&rdquo;</p>
+              <div class={styles.testimonialAuthor}>
+                <strong>{testimonial.name}</strong>
+                <span>{testimonial.vehicle}</span>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+
+      <div class={styles.testimonialsControls} aria-label="Controles das avaliações">
+        <button class={`${styles.testimonialsButton} testimonialsPrev`} type="button" aria-label="Avaliação anterior">‹</button>
+        <div class={`${styles.testimonialsPagination} testimonialsPagination`}></div>
+        <button class={`${styles.testimonialsButton} testimonialsNext`} type="button" aria-label="Próxima avaliação">›</button>
+      </div>
+    </div>
+  </div>
+</section>

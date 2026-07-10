@@ -1,0 +1,48 @@
+---
+import { CalendarCheck, Menu, X } from '@lucide/astro';
+import type { NavigationItem } from '@app-types/landing';
+import styles from './Header.module.css';
+
+const navigation: NavigationItem[] = [
+  { label: 'Serviços', href: '#servicos' },
+  { label: 'Sobre', href: '#sobre' },
+  { label: 'Avaliações', href: '#avaliacoes' },
+  { label: 'Contato', href: '#contato' },
+];
+---
+
+<header class={styles.header} data-header>
+  <div class={`container ${styles.headerInner}`}>
+    <a class={styles.logo} href="/" aria-label="Mecânica Fraga - início">
+      <picture>
+        <source
+          srcset="/images/logo-mecanica-fraga-280.webp 280w, /images/logo-mecanica-fraga-420.webp 420w"
+          sizes="(max-width: 420px) 160px, 210px"
+          type="image/webp"
+        />
+        <img
+          class={styles.logoImage}
+          src="/images/logo-mecanica-fraga-420.png"
+          alt="Mecânica Fraga"
+          width="420"
+          height="125"
+          loading="eager"
+        />
+      </picture>
+    </a>
+
+    <nav class={styles.navigation} aria-label="Menu principal" data-navigation>
+      {navigation.map((item) => <a class={styles.navigationLink} href={item.href}>{item.label}</a>)}
+    </nav>
+
+    <a class={styles.scheduleButton} href="#contato">
+      <CalendarCheck size={18} aria-hidden="true" />
+      <span>Agendar Atendimento</span>
+    </a>
+
+    <button class={styles.menuButton} type="button" aria-label="Abrir menu" aria-expanded="false" data-menu-toggle>
+      <Menu class={styles.menuIconOpen} size={24} aria-hidden="true" />
+      <X class={styles.menuIconClose} size={24} aria-hidden="true" />
+    </button>
+  </div>
+</header>

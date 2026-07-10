@@ -1,0 +1,14 @@
+---
+import styles from './Brands.module.css';
+
+const brands = ['Bosch', 'NGK', 'Mann-Filter', 'Mobil', 'ACDelco', 'Monroe'];
+---
+
+<section class={styles.brands} aria-labelledby="brands-title">
+  <div class={`container ${styles.brandsInner}`} data-reveal>
+    <h2 id="brands-title" class={styles.brandsTitle}>Trabalhamos com marcas e sistemas de referência</h2>
+    <ul class={styles.brandsList} aria-label="Marcas atendidas e utilizadas">
+      {brands.map((brand) => <li class={styles.brandItem}>{brand}</li>)}
+    </ul>
+  </div>
+</section>

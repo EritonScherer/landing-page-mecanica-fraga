@@ -1,0 +1,56 @@
+.brands {
+  border-block: 1px solid var(--color-border);
+  background: var(--color-bg);
+  padding-block: clamp(2rem, 5vw, 3rem);
+}
+
+.brandsInner {
+  display: grid;
+  grid-template-columns: minmax(0, 260px) 1fr;
+  align-items: center;
+  gap: 2rem;
+}
+
+.brandsTitle {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.brandsList {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.brandItem {
+  display: grid;
+  min-height: 62px;
+  place-items: center;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.035);
+  color: var(--color-text-muted);
+  font-weight: 900;
+  letter-spacing: 0.02em;
+}
+
+@media (max-width: 980px) {
+  .brandsInner {
+    grid-template-columns: 1fr;
+  }
+
+  .brandsList {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 520px) {
+  .brandsList {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

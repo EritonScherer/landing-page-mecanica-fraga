@@ -1,0 +1,43 @@
+---
+import '@styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  ogImage?: string;
+}
+
+const {
+  title,
+  description,
+  canonical = 'https://mecanicafraga.com.br/',
+  ogImage = '/images/hero-oficina-premium.webp',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon/favicon.svg" type="image/svg+xml" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={new URL(ogImage, canonical)} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#101010" />
+  </head>
+  <body>
+    <slot />
+    <script src="../scripts/navigation.ts"></script>
+    <script src="../scripts/reveal.ts"></script>
+    <script src="../scripts/testimonials.ts"></script>
+  </body>
+</html>

@@ -1,0 +1,64 @@
+---
+import { Activity, BatteryCharging, CircleGauge, Cog, Droplets, Wrench } from '@lucide/astro';
+import type { Service } from '@app-types/landing';
+import styles from './Services.module.css';
+
+const services: Service[] = [
+  {
+    title: 'Diagnóstico eletrônico',
+    description: 'Leitura de módulos, identificação de falhas e plano de correção com equipamentos modernos.',
+    icon: Activity,
+  },
+  {
+    title: 'Revisão preventiva',
+    description: 'Checklist completo para reduzir riscos, preservar o veículo e evitar gastos inesperados.',
+    icon: CircleGauge,
+  },
+  {
+    title: 'Freios e suspensão',
+    description: 'Inspeção, troca e regulagem de componentes críticos para segurança e estabilidade.',
+    icon: Cog,
+  },
+  {
+    title: 'Troca de óleo e filtros',
+    description: 'Lubrificantes corretos, filtros de qualidade e orientação sobre o melhor intervalo de troca.',
+    icon: Droplets,
+  },
+  {
+    title: 'Bateria e elétrica',
+    description: 'Testes de carga, alternador, partida e correções elétricas com diagnóstico preciso.',
+    icon: BatteryCharging,
+  },
+  {
+    title: 'Mecânica geral',
+    description: 'Soluções para motor, transmissão e sistemas essenciais com orçamento transparente.',
+    icon: Wrench,
+  },
+];
+---
+
+<section id="servicos" class={`section ${styles.services}`} aria-labelledby="services-title">
+  <div class="container">
+    <div class={styles.servicesHeader} data-reveal>
+      <p class={styles.servicesEyebrow}>Serviços</p>
+      <h2 id="services-title" class="sectionTitle">Tudo que seu carro precisa, com padrão de oficina premium.</h2>
+      <p class="sectionLead">
+        Da revisão de rotina ao diagnóstico mais técnico, cada atendimento segue processo claro, peças adequadas e comunicação direta.
+      </p>
+    </div>
+
+    <div class={styles.servicesGrid}>
+      {
+        services.map(({ title, description, icon: Icon }) => (
+          <article class={styles.serviceCard} data-reveal>
+            <span class={styles.serviceIcon} aria-hidden="true">
+              <Icon size={26} stroke-width={2.2} />
+            </span>
+            <h3 class={styles.serviceCardTitle}>{title}</h3>
+            <p class={styles.serviceCardText}>{description}</p>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
