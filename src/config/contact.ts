@@ -1,8 +1,9 @@
-const whatsappNumber =
-  import.meta.env.CONTACT_WHATSAPP_NUMBER ?? "5547999999999";
-const email = import.meta.env.CONTACT_EMAIL ?? "contato@mecanicafraga.com.br";
-const instagramUrl =
-  import.meta.env.CONTACT_INSTAGRAM_URL ?? "https://instagram.com/";
+const getEnv = (key: string, fallback: string) =>
+  process.env[key] ?? import.meta.env[key] ?? fallback;
+
+const whatsappNumber = getEnv("CONTACT_WHATSAPP_NUMBER", "5547999999999");
+const email = getEnv("CONTACT_EMAIL", "contato@mecanicafraga.com.br");
+const instagramUrl = getEnv("CONTACT_INSTAGRAM_URL", "https://instagram.com/");
 
 const whatsappDigits = whatsappNumber.replace(/\D/g, "");
 
